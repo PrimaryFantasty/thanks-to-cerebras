@@ -159,8 +159,6 @@ export async function testModelAvailability(
         response.status === 401 ? "401" : "403",
       );
       await kvUpdateKey(activeKey.id, { status: "invalid" });
-      const cached = state.cachedKeysById.get(activeKey.id);
-      if (cached) cached.status = "invalid";
     } else {
       metrics.inc("upstream_responses_total", "other");
     }
